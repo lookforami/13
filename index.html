@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOOK FOR AMI - 13</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" href="./src/ami_logo.png">
+    
+    <style>
+        /* IMPORT DE LA POLICE LOCALE */
+        @font-face {
+            font-family: 'Akira';
+            src: url('./src/akira-expanded.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* RESET & BASE */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #242424;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* --- ÉCRAN D'ACCUEIL --- */
+        #intro-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #242424;
+            z-index: 10;
+            cursor: pointer;
+        }
+
+        #intro-image {
+            width: 80%;
+            max-width: 400px;
+            transition: all 2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        #intro-image.animate-out {
+            transform: scale(1.3);
+            opacity: 0;
+            filter: blur(10px);
+        }
+
+        #intro-text {
+            font-weight: 700;
+            margin-top: 50px;
+            letter-spacing: 1px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        /* --- ÉCRAN PRINCIPAL (RÉVÉLÉ) --- */
+        #main-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 60px 20px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s forwards 0.2s;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        #main-logo {
+            width: 150px; 
+            margin-bottom: 30px;
+        }
+
+        .cover-wrapper {
+            width: 80vw;
+            max-width: 350px;
+            aspect-ratio: 1 / 1;
+            background-color: #1a1a1a;
+            margin-bottom: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+        }
+
+        .cover-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* TEXTES AKIRA */
+        .akira-title {
+            font-family: 'Akira', sans-serif;
+            font-size: 2.5rem; /* Gros texte */
+            margin-bottom: 15px;
+            color: #fff;
+            line-height: 1.1;
+        }
+
+        .akira-date {
+            font-family: 'Akira', sans-serif;
+            font-size: 2.3rem; /* Plus petit */
+            margin-bottom: 20px;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        .tracklist {
+            list-style: none;
+            width: 100%;
+            max-width: 350px;
+            margin-bottom: 60px;
+        }
+
+        .tracklist li {
+            padding: 20px 0;
+            border-bottom: 1px solid #ebebeb;
+            font-size: 1.6rem; 
+            color: #888;
+            letter-spacing: 2px;
+        }
+
+        .platforms {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="intro-screen">
+        <img src="./src/ami_logo.png" alt="AMI" id="intro-image">
+        <div id="intro-text">[ APPUYEZ POUR RÉVÉLER ]</div>
+    </div>
+
+    <div id="main-screen">
+        <img src="./src/ami_logo.png" alt="Logo AMI" id="main-logo">
+        
+        <div class="cover-wrapper">
+            <img src="./src/cover.png" alt="Cover Projet 13">
+        </div>
+        
+        <div class="akira-title">LOOK FOR AMI.</div>
+        <div class="akira-date">13.07.2026</div>
+        
+        <ul class="tracklist">
+            <li>1. ???</li>
+            <li>2. ???</li>
+            <li>3. ???</li>
+            <li>4. ???</li>
+            <li>5. ???</li>
+            <li>6. ???</li>
+        </ul>
+
+        <div class="platforms">
+            Sera disponible sur toutes les plateformes de streaming
+        </div>
+    </div>
+
+    <script>
+        const introScreen = document.getElementById('intro-screen');
+        const introImage = document.getElementById('intro-image');
+        const introText = document.getElementById('intro-text');
+        const mainScreen = document.getElementById('main-screen');
+
+        introScreen.addEventListener('click', () => {
+            introText.style.display = 'none';
+            introImage.classList.add('animate-out');
+
+            setTimeout(() => {
+                introScreen.style.display = 'none';
+                mainScreen.style.display = 'flex';
+            }, 800);
+        });
+    </script>
+</body>
+</html>
