@@ -207,6 +207,22 @@
     </div>
 
     <script>
+        // NOTIFICATION NTFY AU CHARGEMENT (Bloqué au reload via sessionStorage)
+        if (!sessionStorage.getItem('notifEnvoyee')) {
+            const now = new Date();
+            const day = now.toLocaleDateString('fr-FR');
+            const time = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+
+            fetch('https://ntfy.sh/lookforamitrack13', {
+                method: 'POST',
+                body: `Page chargée le ${day} à ${time}`
+            }).catch(err => console.error("Erreur fetch ntfy:", err)); // Toujours catcher les erreurs pour pas planter le reste
+
+            // On marque le fait que la notif a été envoyée pour cette session
+            sessionStorage.setItem('notifEnvoyee', 'true');
+        }
+
+        // GESTION DU CLIC
         const introScreen = document.getElementById('intro-screen');
         const introImage = document.getElementById('intro-image');
         const introText = document.getElementById('intro-text');
