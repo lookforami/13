@@ -97,10 +97,10 @@
             display: block;
         }
 
-        /* TEXTES AKIRA */
+        /* TEXTES AKIRA (ORDINATEUR PAR DÉFAUT) */
         .akira-title {
             font-family: 'Akira', sans-serif;
-            font-size: 2.5rem; /* Gros texte */
+            font-size: 2.5rem; /* Gros texte sur PC */
             margin-bottom: 15px;
             color: #fff;
             line-height: 1.1;
@@ -108,10 +108,21 @@
 
         .akira-date {
             font-family: 'Akira', sans-serif;
-            font-size: 2.3rem; /* Plus petit */
+            font-size: 2.3rem; 
             margin-bottom: 20px;
             color: #fff;
             letter-spacing: 2px;
+        }
+
+        /* ADAPTATION MOBILE POUR LE TITRE ET LA DATE */
+        @media (max-width: 480px) {
+            .akira-title {
+                font-size: 1.5rem; /* Réduit pour que ça tienne sur une ligne sur téléphone */
+                white-space: nowrap; /* Force le texte à rester sur une seule ligne */
+            }
+            .akira-date {
+                font-size: 1.4rem; /* Réduit proportionnellement la date aussi */
+            }
         }
 
         .tracklist {
@@ -129,19 +140,19 @@
             letter-spacing: 2px;
         }
 
-        /* BOUTON LINKTREE OPTIMISÉ POUR S'AFFICHER EN UNE LIGNE */
+        /* BOUTON LINKTREE */
         .linktree-btn {
             display: inline-block;
             font-family: 'Akira', sans-serif;
-            font-size: 0.75rem; /* Taille réduite pour forcer la ligne unique */
+            font-size: 0.75rem; 
             color: #fff;
             text-decoration: none;
             border: 2px solid #fff;
             padding: 15px 25px;
             margin-bottom: 50px;
-            letter-spacing: 1px; /* Espacement ajusté pour que ça rentre bien */
-            white-space: nowrap; /* Empêche le texte de revenir à la ligne */
-            max-width: 90vw; /* S'assure que le bouton ne dépasse pas de l'écran */
+            letter-spacing: 1px; 
+            white-space: nowrap; 
+            max-width: 90vw; 
             transition: all 0.3s ease;
             background: transparent;
         }
@@ -187,7 +198,7 @@
             <li>6. ???</li>
         </ul>
 
-        <!-- BOUTON LINKTREE CONFIGURÉ -->
+        <!-- BOUTON LINKTREE -->
         <a href="https://linktr.ee/lookforami" target="_blank" class="linktree-btn">OTHER MUSIC BY LOOK FOR AMI</a>
 
         <div class="platforms">
