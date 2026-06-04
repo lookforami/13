@@ -118,7 +118,7 @@
             list-style: none;
             width: 100%;
             max-width: 350px;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
 
         .tracklist li {
@@ -127,6 +127,29 @@
             font-size: 1.6rem; 
             color: #888;
             letter-spacing: 2px;
+        }
+
+        /* BOUTON LINKTREE OPTIMISÉ POUR S'AFFICHER EN UNE LIGNE */
+        .linktree-btn {
+            display: inline-block;
+            font-family: 'Akira', sans-serif;
+            font-size: 0.75rem; /* Taille réduite pour forcer la ligne unique */
+            color: #fff;
+            text-decoration: none;
+            border: 2px solid #fff;
+            padding: 15px 25px;
+            margin-bottom: 50px;
+            letter-spacing: 1px; /* Espacement ajusté pour que ça rentre bien */
+            white-space: nowrap; /* Empêche le texte de revenir à la ligne */
+            max-width: 90vw; /* S'assure que le bouton ne dépasse pas de l'écran */
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .linktree-btn:hover {
+            background-color: #fff;
+            color: #242424;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
         }
 
         .platforms {
@@ -163,6 +186,9 @@
             <li>5. ???</li>
             <li>6. ???</li>
         </ul>
+
+        <!-- BOUTON LINKTREE CONFIGURÉ -->
+        <a href="https://linktr.ee/lookforami" target="_blank" class="linktree-btn">OTHER MUSIC BY LOOK FOR AMI</a>
 
         <div class="platforms">
             AVAILABLE ON ALL STREAMING PLATFORMS ON 13/07/2026
