@@ -100,7 +100,7 @@
         /* TEXTES AKIRA (ORDINATEUR PAR DÉFAUT) */
         .akira-title {
             font-family: 'Akira', sans-serif;
-            font-size: 2.5rem; /* Gros texte sur PC */
+            font-size: 2.5rem; 
             margin-bottom: 15px;
             color: #fff;
             line-height: 1.1;
@@ -117,11 +117,11 @@
         /* ADAPTATION MOBILE POUR LE TITRE ET LA DATE */
         @media (max-width: 480px) {
             .akira-title {
-                font-size: 1.5rem; /* Réduit pour que ça tienne sur une ligne sur téléphone */
-                white-space: nowrap; /* Force le texte à rester sur une seule ligne */
+                font-size: 1.5rem; 
+                white-space: nowrap; 
             }
             .akira-date {
-                font-size: 1.4rem; /* Réduit proportionnellement la date aussi */
+                font-size: 1.4rem; 
             }
         }
 
@@ -138,6 +138,44 @@
             font-size: 1.6rem; 
             color: #888;
             letter-spacing: 2px;
+        }
+
+        .tracklist a {
+            display: block;      
+            margin-top: 10px;    
+            font-size: 1.0rem; 
+            color: #888;
+            letter-spacing: 2px;
+            text-decoration: none !important;
+        }
+
+        .tracklist a:hover  {
+            color: aliceblue;
+        }
+
+        .tracklist li.announced {
+            color: aliceblue;
+        }
+
+        /* ALIGNEMENT DE L'ICÔNE ET DU TEXTE DE LA TRACK */
+        .track-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px; /* Espace entre l'image et le texte */
+        }
+
+        /* STYLE DU BOUTON IMAGE AUDIO */
+        .audio-icon-btn {
+            width: 24px;  /* Ajuste la taille selon tes images */
+            height: 24px;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.2s ease;
+        }
+
+        .audio-icon-btn:hover {
+            transform: scale(1.12); /* Léger effet de zoom au survol */
         }
 
         /* BOUTON LINKTREE */
@@ -163,7 +201,8 @@
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
         }
 
-        .platforms {
+        /* STYLE DES PLATFORMES ET DU FOOTER GROUPÉ */
+        .platforms, footer {
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -192,22 +231,31 @@
         <ul class="tracklist">
             <li>1. ???</li>
             <li>2. ???</li>
-            <li>3. ???</li>
+            <li class="announced">
+                <div class="track-main">
+                    <img id="sample-trigger" src="./src/play.png" alt="Play" class="audio-icon-btn">
+                    <span>3. 9FT.</span>
+                </div>
+                <a href="https://distrokid.com/hyperfollow/lookforami/9ft?utm_campaign=website&utm_medium=Email+&utm_source=SendGrid">[ PRE-SAVE HERE ]</a>
+            </li>
             <li>4. ???</li>
             <li>5. ???</li>
             <li>6. ???</li>
         </ul>
 
-        <!-- BOUTON LINKTREE -->
-        <a href="https://linktr.ee/lookforami" target="_blank" class="linktree-btn">OTHER MUSIC BY LOOK FOR AMI</a>
+        <a href="https://linktr.ee/lookforami" target="_blank" class="linktree-btn">OTHER MUSIC BY LOOK FOR AMI.</a>
 
         <div class="platforms">
             AVAILABLE ON ALL STREAMING PLATFORMS ON 13/07/2026
         </div>
+
+        <footer>
+            🦆 Page created by @leplubo_des_canards
+        </footer>
     </div>
 
     <script>
-        // NOTIFICATION NTFY AU CHARGEMENT (Bloqué au reload via sessionStorage)
+        // NOTIFICATION NTFY AU CHARGEMENT
         if (!sessionStorage.getItem('notifEnvoyee')) {
             const now = new Date();
             const day = now.toLocaleDateString('fr-FR');
@@ -216,13 +264,12 @@
             fetch('https://ntfy.sh/lookforamitrack13', {
                 method: 'POST',
                 body: `Page chargée le ${day} à ${time}`
-            }).catch(err => console.error("Erreur fetch ntfy:", err)); // Toujours catcher les erreurs pour pas planter le reste
+            }).catch(err => console.error("Erreur fetch ntfy:", err)); 
 
-            // On marque le fait que la notif a été envoyée pour cette session
             sessionStorage.setItem('notifEnvoyee', 'true');
         }
 
-        // GESTION DU CLIC
+        // GESTION DU CLIC INTRO
         const introScreen = document.getElementById('intro-screen');
         const introImage = document.getElementById('intro-image');
         const introText = document.getElementById('intro-text');
@@ -236,6 +283,25 @@
                 introScreen.style.display = 'none';
                 mainScreen.style.display = 'flex';
             }, 800);
+        });
+
+        // GESTION DU LECTEUR AUDIO AVEC CHANGEMENT D'IMAGE
+        const sampleAudio = new Audio('./src/9FT_sample.wav');
+        const sampleTrigger = document.getElementById('sample-trigger');
+
+        sampleTrigger.addEventListener('click', () => {
+            if (sampleAudio.paused) {
+                sampleAudio.play();
+                sampleTrigger.src = './src/pause.png'; // Changement vers l'icône Pause
+            } else {
+                sampleAudio.pause();
+                sampleTrigger.src = './src/play.png'; // Retour à l'icône Play
+            }
+        });
+
+        // Remise de l'icône Play quand l'audio se termine tout seul
+        sampleAudio.addEventListener('ended', () => {
+            sampleTrigger.src = './src/play.png';
         });
     </script>
 </body>
