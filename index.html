@@ -141,12 +141,10 @@
         }
 
         .tracklist a {
-            display: block;      
-            margin-top: 10px;    
-            font-size: 1.0rem; 
+            display: inline;         
+            font-size: 1.6rem; 
             color: #888;
             letter-spacing: 2px;
-            text-decoration: none !important;
         }
 
         .tracklist a:hover  {
@@ -159,15 +157,19 @@
 
         /* ALIGNEMENT DE L'ICÔNE ET DU TEXTE DE LA TRACK */
         .track-main {
-            display: flex;
+            position: relative;
+            display: inline-flex; /* Permet de se centrer avec le reste du texte */
             align-items: center;
             justify-content: center;
-            gap: 12px; /* Espace entre l'image et le texte */
+            white-space: nowrap; 
         }
 
         /* STYLE DU BOUTON IMAGE AUDIO */
         .audio-icon-btn {
-            width: 24px;  /* Ajuste la taille selon tes images */
+            position: absolute;
+            right: 100%; /* Pousse l'icône à l'extérieur, pile à gauche du texte */
+            margin-right: 12px; /* L'écart entre l'icône et le "3." */
+            width: 24px;  
             height: 24px;
             cursor: pointer;
             user-select: none;
@@ -175,7 +177,7 @@
         }
 
         .audio-icon-btn:hover {
-            transform: scale(1.12); /* Léger effet de zoom au survol */
+            transform: scale(1.12);
         }
 
         /* BOUTON LINKTREE */
@@ -234,9 +236,8 @@
             <li class="announced">
                 <div class="track-main">
                     <img id="sample-trigger" src="./src/play.png" alt="Play" class="audio-icon-btn">
-                    <span>3. 9FT.</span>
+                    <span>3. <a href="./src/songs/9ft.html">9FT.</a></span>
                 </div>
-                <a href="https://distrokid.com/hyperfollow/lookforami/9ft?utm_campaign=website&utm_medium=Email+&utm_source=SendGrid">[ PRE-SAVE HERE ]</a>
             </li>
             <li>4. ???</li>
             <li>5. ???</li>
@@ -292,10 +293,10 @@
         sampleTrigger.addEventListener('click', () => {
             if (sampleAudio.paused) {
                 sampleAudio.play();
-                sampleTrigger.src = './src/pause.png'; // Changement vers l'icône Pause
+                sampleTrigger.src = './src/pause.png'; 
             } else {
                 sampleAudio.pause();
-                sampleTrigger.src = './src/play.png'; // Retour à l'icône Play
+                sampleTrigger.src = './src/play.png'; 
             }
         });
 

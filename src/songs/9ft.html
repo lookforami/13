@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9FT. - LOOK FOR AMI</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../ami_logo.png">
+    
+    <style>
+        /* IMPORT DE LA POLICE LOCALE (Chemin adapté pour src/songs/) */
+        @font-face {
+            font-family: 'Akira';
+            src: url('../akira-expanded.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #242424;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px 60px 20px;
+        }
+
+        /* BOUTON RETOUR */
+        .back-btn {
+            align-self: flex-start;
+            color: #888;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            transition: color 0.3s;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+        }
+
+        .cover-wrapper {
+            width: 80vw;
+            max-width: 350px;
+            aspect-ratio: 1 / 1;
+            background-color: #1a1a1a;
+            margin-bottom: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+        }
+
+        .cover-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .track-title {
+            font-family: 'Akira', sans-serif;
+            font-size: 2.5rem; 
+            margin-bottom: 40px;
+            color: #fff;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        @media (max-width: 480px) {
+            .track-title {
+                font-size: 2rem; 
+            }
+        }
+
+        /* LIENS PLATEFORMES */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        .platform-btn {
+            display: block;
+            font-family: 'Akira', sans-serif;
+            font-size: 0.8rem; 
+            color: #fff;
+            text-decoration: none;
+            border: 2px solid #fff;
+            padding: 18px 0;
+            letter-spacing: 2px; 
+            transition: all 0.3s ease;
+            background: transparent;
+            text-align: center;
+        }
+
+        .platform-btn:hover {
+            background-color: #fff;
+            color: #242424;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../../index.html" class="back-btn">← RETOUR</a>
+
+    <div class="cover-wrapper">
+        <img src="../9FT_cover.png" alt="Cover 9FT.">
+    </div>
+    
+    <div class="track-title">9FT.</div>
+    
+    <div class="links-container">
+        <a href="https://open.spotify.com/intl-fr/track/3o6mkS6XVQopC9MZHjfGzf?si=babc03640c354c79" target="_blank" class="platform-btn">SPOTIFY</a>
+        <a href="music://music.apple.com/fr/album/9ft/6777281449?i=6777281450" target="_blank" class="platform-btn">APPLE MUSIC</a>
+        <a href="https://music.amazon.fr/tracks/B0H47ZPNZC?marketplaceId=A13V1IB3VIYZZH&musicTerritory=FR&ref=dm_sh_VeHoOpLkNWoEYZ5ZphzgjsuTU" target="_blank" class="platform-btn">AMAZON MUSIC</a>
+        <a href="https://link.deezer.com/s/33xKnyRW52WtTN4oIh9PE" target="_blank" class="platform-btn">DEEZER</a>
+        <a href="https://music.youtube.com/watch?v=JUTkPBEO8CQ&si=J3POV2imfSovfhso" target="_blank" class="platform-btn">YOUTUBE MUSIC</a>
+    </div>
+
+</body>
+</html>
